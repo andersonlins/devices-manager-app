@@ -1,2 +1,2 @@
 # devices-manager-app
-It's a simple app to evaluation proporses. Technologies: Angular, NodeJS and MySQL
+It's a simple app to devices crud.Technologies: Angular, NodeJS and MySQL
