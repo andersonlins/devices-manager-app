@@ -1,0 +1,12 @@
+@import '~@angular/material/_theming.scss';
+@import '../assets/variables.scss';
+
+mat-sidenav-container, mat-sidenav {
+    height: 100%;
+}
+mat-sidenav {
+    width: 250px;
+}
+item-menu {
+    color: red;
+}

@@ -1,0 +1,27 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav >
+    <div fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="row" style="padding: 10px 15px 10px 15px;" routerLink="/category" (click)="sidenav.close()">
+        <mat-icon>bookmarks</mat-icon>
+        <span>Category</span>
+      </div>
+      <div fxLayout="row" style="padding: 10px 15px 10px 15px;" routerLink="/device" (click)="sidenav.close()">
+        <mat-icon>phone_android</mat-icon>
+        <span>Device</span>
+      </div>
+    </div>
+  </mat-sidenav>
+    <mat-sidenav-content >
+      <main>
+        <mat-toolbar color="primary">
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>Device Manager</span>
+        </mat-toolbar>
+        <router-outlet ></router-outlet>
+      </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
