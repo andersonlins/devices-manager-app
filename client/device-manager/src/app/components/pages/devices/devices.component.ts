@@ -12,10 +12,11 @@ interface DeviceViewModel extends DeviceModel{
 
 @Component({
   selector: 'app-devices',
-  templateUrl: './devices.component.html'
+  templateUrl: './devices.component.html',
+  styleUrls: ['./devices.component.scss']
 })
 export class DevicesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'color', 'partNumber', 'category'];
+  displayedColumns: string[] = ['id', 'name', 'color', 'partNumber', 'category', 'actions'];
   devices: DeviceViewModel[] = [];
   categories: CategoryModel[] = [];
   categoriesMap: any;
@@ -49,5 +50,8 @@ export class DevicesComponent implements OnInit {
     } catch (error) {
 
     }
+  }
+  delete(device: DeviceViewModel) {
+    console.log(`try to delete`, device);
   }
 }
