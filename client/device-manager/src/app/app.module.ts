@@ -10,17 +10,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './components/pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DevicesComponent } from './components/pages/devices/devices.component';
 import { DevicesService } from './core/services/devices.service';
 import { CategoriesService } from './core/services/categories.service';
+import { CategoryModule } from './components/pages/category/category.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DevicesComponent
+    DevicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,8 @@ import { CategoriesService } from './core/services/categories.service';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CategoryModule
   ],
   exports: [
     MatSidenavModule,
