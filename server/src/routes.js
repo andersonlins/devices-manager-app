@@ -1,7 +1,7 @@
 import Router from 'express';
-import CategoriasRouter from './categories.routes'
+import CategoriesRouter from './app/routes/categories.routes'
+import DevicesRouter from './app/routes/devices.routes'
 
-import DeviceController from './app/controller/DeviceController';
 const routes = Router();
  
 routes.get('/',function(req,res){
@@ -10,12 +10,7 @@ routes.get('/',function(req,res){
     })
 })
 
-routes.use('/categories', CategoriasRouter);
-
-routes.get('/devices', DeviceController.index)
-routes.get('/devices/:id', DeviceController.get)
-routes.post('/devices', DeviceController.add)
-routes.put('/devices/:id', DeviceController.update)
-routes.delete('/devices/:id', DeviceController.delete)
+routes.use('/categories', CategoriesRouter);
+routes.use('/devices',DevicesRouter);
 
 export default routes;
