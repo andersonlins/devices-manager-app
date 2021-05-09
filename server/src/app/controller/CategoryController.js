@@ -3,7 +3,7 @@ import Category from "../models/Category";
 class CategoryController {
   async add(req, res) {
     const category = await Category.create(req.body);
-    return res.json(curso)
+    return res.json(category)
   }
   async index(req, res) {
     const categories = await Category.findAll();
