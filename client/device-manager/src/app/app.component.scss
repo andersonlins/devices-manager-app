@@ -10,3 +10,19 @@ mat-sidenav {
 item-menu {
     color: red;
 }
+
+.page-box {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 2px 1px 5px #bdb7b7;
+  border-radius: 2px;
+  border: 1px solid #e0e0e0;
+
+  .page-content {
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+}
