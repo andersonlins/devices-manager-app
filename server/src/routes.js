@@ -11,6 +11,6 @@ routes.get('/',function(req,res){
 })
 
 routes.use('/categories', CategoriesRouter);
-routes.use('/devices',DevicesRouter);
+routes.use('/devices', DevicesRouter);
 
 export default routes;

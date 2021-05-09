@@ -3,10 +3,10 @@ import Router from 'express'
 
 const router = Router();
 
-router.get('/devices', DeviceController.index)
-router.get('/devices/:id', DeviceController.get)
-router.post('/devices', DeviceController.add)
-router.put('/devices/:id', DeviceController.update)
-router.delete('/devices/:id', DeviceController.delete)
+router.get('/', DeviceController.index)
+router.get('/:id', DeviceController.get)
+router.post('/', DeviceController.add)
+router.put('/:id', DeviceController.update)
+router.delete('/:id', DeviceController.delete)
 
 export default router;
