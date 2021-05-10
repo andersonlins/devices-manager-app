@@ -9,17 +9,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DevicesComponent } from './components/pages/devices/devices.component';
 import { DevicesService } from './core/services/devices.service';
 import { CategoriesService } from './core/services/categories.service';
 import { CategoryModule } from './components/pages/category/category.module';
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DevicesComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,8 @@ import { CategoryModule } from './components/pages/category/category.module';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     HttpClientModule,
     CategoryModule

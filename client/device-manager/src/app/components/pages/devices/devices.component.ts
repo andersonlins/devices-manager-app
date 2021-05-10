@@ -1,9 +1,13 @@
+import { SNACK_PRESETS } from './../../../core/utils';
 import { DevicesService } from '@services/devices.service';
 import { CategoryModel } from '@models/category.model';
 import { CategoriesService } from './../../../core/services/categories.service';
 import { DeviceModel } from '@models/device.model';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
+import { ModalConfirmComponent } from '../../modal-confirm/modal-confirm.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface DeviceViewModel extends DeviceModel{
@@ -20,16 +24,10 @@ export class DevicesComponent implements OnInit {
   devices: DeviceViewModel[] = [];
   categories: CategoryModel[] = [];
   categoriesMap: any;
-  constructor(private catService: CategoriesService, private devService: DevicesService) { }
+  constructor(private catService: CategoriesService, private devService: DevicesService,
+    public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.devices.push({
-      id: 1,
-      name: 'Redmi note 7',
-      color: '#eee',
-      partNumber: 7987987,
-      categoryId: 1
-    })
     this.populate();
   }
 
@@ -46,12 +44,33 @@ export class DevicesComponent implements OnInit {
         this.devices.forEach(dev => {
           dev.category = this.categoriesMap[dev.categoryId] || this.categoriesMap[1];
         });
+      }, (err) => {
+        this.devices = [];
+        this.categories = [];
+        this.snackBar.open('Erro ao carregar dados', undefined, SNACK_PRESETS.ERROR);
       });
     } catch (error) {
-
+      this.devices = [];
+      this.categories = [];
+      this.snackBar.open('Erro ao carregar dados', undefined, SNACK_PRESETS.ERROR);
     }
   }
-  delete(device: DeviceViewModel) {
+  deleteDevice(device: DeviceViewModel) {
     console.log(`try to delete`, device);
+    const dialogRef = this.dialog.open(ModalConfirmComponent, {
+      data: {
+        title: 'Deseja remover o dispositivo?'
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+          this.devService.delete(device.id).subscribe(res => {
+          this.devices = this.devices.filter( d => d.id !== device.id);
+          this.snackBar.open('Removido com sucesso', undefined, SNACK_PRESETS.SUCCESS);
+        }, () => {
+          this.snackBar.open('Erro ao remover', undefined, SNACK_PRESETS.ERROR);
+        })
+      }
+    });
   }
 }
