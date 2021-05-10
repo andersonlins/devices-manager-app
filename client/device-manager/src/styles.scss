@@ -43,3 +43,21 @@ item-menu {
     color: #9e4b4b;
   }
 }
+.half-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  .form-row {
+    width: 100%;
+    .mat-form-field {
+      width: 100%;
+    }
+    &.button-area {
+      display: flex;
+      justify-content: flex-end;
+      button + button {
+        margin-left: 10px;
+      }
+    }
+  }
+}

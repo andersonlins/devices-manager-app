@@ -1,0 +1,27 @@
+<form class="half-form" [formGroup]="deviceForm">
+ <div class="form-row">
+  <mat-form-field >
+    <mat-label>Color</mat-label>
+    <input matInput formControlName="color" >
+  </mat-form-field>
+ </div>
+  <div class="form-row">
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="categoryId">
+        <mat-option [value]="0">Nenhuma</mat-option>
+        <mat-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+ <div class="form-row">
+  <mat-form-field >
+    <mat-label>Party Number</mat-label>
+    <input matInput formControlName="partNumber" >
+  </mat-form-field>
+ </div>
+  <div class="form-row button-area">
+    <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+    <button mat-raised-button color="secondary" (click)="cancel()">cancelar</button>
+  </div>
+</form>

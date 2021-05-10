@@ -24,6 +24,8 @@ export class DevicesComponent implements OnInit {
   devices: DeviceViewModel[] = [];
   categories: CategoryModel[] = [];
   categoriesMap: any;
+  selectedDevice: DeviceModel | null = null;
+
   constructor(private catService: CategoriesService, private devService: DevicesService,
     public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
