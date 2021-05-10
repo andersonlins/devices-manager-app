@@ -1,0 +1,23 @@
+div.table-action-buttons {
+  button.btn.btn-action {
+    background: transparent;
+    border: none;
+    color: #4e4e4e;
+    cursor: pointer;
+    .mat-icon {
+      font-size: 1.2rem;
+    }
+    &:hover {
+      color: #2c63fb;
+      &.delete {
+        color: #ef4545;
+      }
+      .mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+    & +button {
+      margin-left: 5px;
+    }
+  }
+}
