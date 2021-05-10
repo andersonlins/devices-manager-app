@@ -75,6 +75,14 @@ export class DevicesComponent implements OnInit {
       }
     });
   }
+  addNewDevice() {
+    this.selectedDevice = {
+      id: 0,
+      color: '',
+      categoryId: 0,
+      partNumber: 0
+    };
+  }
   saveDevice(device: DeviceViewModel) {
     this.devService.save(device).subscribe(res => {
       this.snackBar.open('Salvo', undefined, SNACK_PRESETS.SUCCESS);

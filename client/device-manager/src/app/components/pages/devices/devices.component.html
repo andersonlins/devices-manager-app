@@ -1,6 +1,6 @@
 <div class="content">
   <app-page-header title="Devices">
-    <button mat-mini-fab color="primary" *ngIf="!selectedDevice">
+    <button mat-mini-fab color="primary" *ngIf="!selectedDevice" (click)="addNewDevice()">
       <mat-icon>add</mat-icon>
     </button>
   </app-page-header>
