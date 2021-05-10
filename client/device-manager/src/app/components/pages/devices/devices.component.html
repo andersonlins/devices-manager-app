@@ -1,5 +1,9 @@
 <div class="content">
-  <h2>Devices</h2>
+  <app-page-header title="Devices">
+    <button mat-mini-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </app-page-header>
   <table mat-table [dataSource]="devices" style="width: 100%;">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> No. </th>
