@@ -1,1 +1,20 @@
-<p>edit-category works!</p>
+<form class="half-form" [formGroup]="categoryForm">
+    <div class="form-row">
+     <mat-form-field >
+       <mat-label>Name</mat-label>
+       <input matInput formControlName="name" >
+       <mat-error>
+           Deve conter apenas letras no máximo 128 caracters.
+       </mat-error>
+     </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-flat-button 
+            [disabled]="categoryForm.dirty && categoryForm.invalid" 
+            color="primary" (click)="save()" cdkFocusInitial>
+            Salvar
+        </button>
+        <button mat-stroked-button color="secondary" (click)="cancel()">Cancelar</button>
+    </div>
+   </form>
+   
