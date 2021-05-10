@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CategoryComponent } from './category.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -13,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     CommonModule,
+    MatIconModule,
     MatTableModule,
   ]
 })
