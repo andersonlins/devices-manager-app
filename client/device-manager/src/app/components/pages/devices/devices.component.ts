@@ -20,7 +20,7 @@ interface DeviceViewModel extends DeviceModel{
   styleUrls: ['./devices.component.scss']
 })
 export class DevicesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'color', 'partNumber', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'color', 'partNumber', 'category', 'actions'];
   devices: DeviceViewModel[] = [];
   categories: CategoryModel[] = [];
   categoriesMap: any;

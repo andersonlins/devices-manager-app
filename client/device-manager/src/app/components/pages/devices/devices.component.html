@@ -19,10 +19,10 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <!-- <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+    </ng-container> -->
 
     <!-- Weight Column -->
     <ng-container matColumnDef="partNumber">
@@ -59,7 +59,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <div class="no-data" *ngIf="!devices || !devices.length">
+  <div class="no-data" *ngIf="!selectedDevice && (!devices || !devices.length)">
     Nenhum dispositivo encontrado
   </div>
 </div>
