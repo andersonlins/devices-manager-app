@@ -1,7 +1,8 @@
 import { CategoryModel } from '@models/category.model';
 import { DeviceModel } from '@models/device.model';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-device',
@@ -11,9 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class EditDeviceComponent implements OnInit {
 
-  @Input()
+
   selectedDevice: DeviceModel | null = null;
-  @Input()
   categories: CategoryModel[] = [];
   deviceForm: FormGroup;
 
@@ -24,8 +24,11 @@ export class EditDeviceComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private fb: FormBuilder) {
-   this.deviceForm = this.fb.group({});
+  constructor(public dialogRef: MatDialogRef<EditDeviceComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
+    this.selectedDevice = data?.device;
+    this.categories = data?.categories || [];
+    this.deviceForm = this.fb.group({});
   }
 
   ngOnInit() {
@@ -38,7 +41,7 @@ export class EditDeviceComponent implements OnInit {
   }
 
   cancel() {
-    this.onCancelEdit.emit();
+    this.dialogRef.close('cancel');
   }
   save() {
     this.submitted = true;
@@ -47,7 +50,7 @@ export class EditDeviceComponent implements OnInit {
       return;
     }
     const editedDevice = { ...this.selectedDevice, ...this.deviceForm.value};
-    this.onSaveDevice.emit(editedDevice);
+    this.dialogRef.close(editedDevice);
     this.submitted = false;
   }
 }

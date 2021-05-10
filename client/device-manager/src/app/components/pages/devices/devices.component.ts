@@ -1,3 +1,4 @@
+import { EditDeviceComponent } from './edit-device/edit-device.component';
 import { SNACK_PRESETS } from './../../../core/utils';
 import { DevicesService } from '@services/devices.service';
 import { CategoryModel } from '@models/category.model';
@@ -58,7 +59,6 @@ export class DevicesComponent implements OnInit {
     }
   }
   deleteDevice(device: DeviceViewModel) {
-    console.log(`try to delete`, device);
     const dialogRef = this.dialog.open(ModalConfirmComponent, {
       data: {
         title: 'Deseja remover o dispositivo?'
@@ -76,16 +76,35 @@ export class DevicesComponent implements OnInit {
     });
   }
   addNewDevice() {
-    this.selectedDevice = {
+    this.editDevice({
       id: 0,
       color: '',
       categoryId: 0,
       partNumber: 0
-    };
+    });
   }
+
+  editDevice(device: DeviceViewModel) {
+    const dialogRef = this.dialog.open(EditDeviceComponent, {
+      width: '350px',
+      data: {
+        device: device,
+        categories: this.categories
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'cancel') {
+        return;
+      }
+      this.saveDevice(result);
+    });
+  }
+
+
   saveDevice(device: DeviceViewModel) {
     this.devService.save(device).subscribe(res => {
-      this.snackBar.open('Salvo', undefined, SNACK_PRESETS.SUCCESS);
+      const msg = device.id ? 'Salvo com sucess0' : 'Adicionado com sucesso';
+      this.snackBar.open(msg, undefined, SNACK_PRESETS.SUCCESS);
       this.populate();
       this.selectedDevice = null;
     },() => {

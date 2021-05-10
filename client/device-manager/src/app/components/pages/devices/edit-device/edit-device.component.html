@@ -29,8 +29,8 @@
     </mat-error>
   </mat-form-field>
  </div>
-  <div class="form-row button-area">
-    <button mat-raised-button [disabled]="(deviceForm.dirty || submitted) && deviceForm.invalid" color="primary" (click)="save()">Salvar</button>
-    <button mat-raised-button color="secondary" (click)="cancel()">cancelar</button>
+  <div mat-dialog-actions align="end">
+    <button mat-flat-button [disabled]="(deviceForm.dirty || submitted) && deviceForm.invalid" color="primary" (click)="save()" cdkFocusInitial>Salvar</button>
+    <button mat-stroked-button color="secondary" (click)="cancel()">Cancelar</button>
   </div>
 </form>
