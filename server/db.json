@@ -1,0 +1,43 @@
+{
+    "devices": [
+        {
+            "id": 1,
+            "name": "Redmi note 7",
+            "categoryId": 1,
+            "color": "#333",
+            "partNumber": 777777
+        },
+        {
+            "id": 2,
+            "name": "Samsung A51",
+            "categoryId": 1,
+            "color": "#555",
+            "partNumber": 8888888
+        },
+        {
+            "id": 3,
+            "name": "Samsung S21",
+            "categoryId": 1,
+            "color": "#555",
+            "partNumber": 9999999
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Default"
+        },
+        {
+            "id": 2,
+            "name": "Smartphone"
+        },
+        {
+            "id": 3,
+            "name": "Cellphone"
+        },
+        {
+            "id": 4,
+            "name": "Tablet"
+        }
+    ]
+}

@@ -1,5 +1,4 @@
 import Sequelize, { Model } from "sequelize";
-import Category from "./Category";
  
 class Device extends Model {
   static init(sequelize) {

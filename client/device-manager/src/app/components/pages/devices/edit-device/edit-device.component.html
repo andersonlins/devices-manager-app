@@ -1,0 +1,36 @@
+<form class="half-form" [formGroup]="deviceForm">
+ <div class="form-row">
+  <mat-form-field >
+    <mat-label>Color</mat-label>
+    <input matInput formControlName="color" >
+    <mat-error>
+        Deve conter apenas letras no máximo 16 caracters.
+    </mat-error>
+  </mat-form-field>
+ </div>
+  <div class="form-row">
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoryId">
+        <mat-option [value]="0">Nenhuma</mat-option>
+        <mat-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</mat-option>
+      </mat-select>
+      <mat-error>
+        Deve selecionar uma categoria
+      </mat-error>
+    </mat-form-field>
+  </div>
+ <div class="form-row">
+  <mat-form-field >
+    <mat-label>Número</mat-label>
+    <input matInput formControlName="partNumber" >
+    <mat-error>
+      Deve conter apenas números
+    </mat-error>
+  </mat-form-field>
+ </div>
+  <div mat-dialog-actions align="end">
+    <button mat-flat-button [disabled]="(deviceForm.dirty || submitted) && deviceForm.invalid" color="primary" (click)="save()" cdkFocusInitial>Salvar</button>
+    <button mat-stroked-button color="secondary" (click)="cancel()">Cancelar</button>
+  </div>
+</form>

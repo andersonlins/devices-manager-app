@@ -1,13 +1,14 @@
 import express from 'express';
-import routes from './routes.js';
+import routes from './../routes.js';
 import cors from 'cors';
-import './database';
+import './database/index.js';
 
 class App {
     constructor(){
         this.server = express();
-        this.middlewares()
-        this.routes()
+        this.server.use(express.static("./public"));
+        this.middlewares();
+        this.routes();
     }
  
     routes(){

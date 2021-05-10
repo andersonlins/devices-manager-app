@@ -7,8 +7,8 @@ class DeviceController {
       return res.json(device)
     }
     async index(req, res) {
-      const devices = await Device.findAll();
-      return res.json(devices)
+      const device = await Device.findAll({ include: [{model: Category, as: 'category'}]});
+      return res.json(device)
     }
     async update(req, res) {
       let device = await Device.findByPk(req.params.id)

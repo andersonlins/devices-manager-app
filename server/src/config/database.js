@@ -7,7 +7,6 @@ module.exports = {
     port: 3306,
     define: {
       timestamps: false,
-      underscored: true,
-      underscoredAll: true,
+      freezeTableName: true,
     },
 }

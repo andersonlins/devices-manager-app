@@ -1,13 +1,13 @@
 <mat-sidenav-container autosize>
   <mat-sidenav #sidenav >
     <div fxLayout="column" fxLayoutGap="20px">
-      <div fxLayout="row" style="padding: 10px 15px 10px 15px;" routerLink="/category" (click)="sidenav.close()">
+      <div fxLayout="row" style="padding: 10px 15px 10px 15px; display:flex;" routerLink="/categories" (click)="sidenav.close()">
         <mat-icon>bookmarks</mat-icon>
-        <span>Category</span>
+        <span style="margin-bottom:10px;">Category</span>
       </div>
-      <div fxLayout="row" style="padding: 10px 15px 10px 15px;" routerLink="/device" (click)="sidenav.close()">
+      <div fxLayout="row" style="padding: 10px 15px 10px 15px; display:flex;" routerLink="/devices" (click)="sidenav.close()">
         <mat-icon>phone_android</mat-icon>
-        <span>Device</span>
+        <span style="margin-bottom:10px;">Device</span>
       </div>
     </div>
   </mat-sidenav>
@@ -19,7 +19,11 @@
           </button>
           <span>Device Manager</span>
         </mat-toolbar>
-        <router-outlet ></router-outlet>
+        <div class="page-box">
+          <div class="page-content">
+            <router-outlet ></router-outlet>
+          </div>
+        </div>
       </main>
     </mat-sidenav-content>
 </mat-sidenav-container>
