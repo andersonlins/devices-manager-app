@@ -44,14 +44,10 @@
         </div>
       </td>
     </ng-container>
-    <ng-container matColumnDef="noRecord">
-      <td mat-footer-cell *matFooterCellDef [attr.colspan]="6" style="text-align: center;">Nenhum dispositivo encontrado</td>
-    </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <ng-template [ngIf]="devices.length === 0">
-      <tr mat-footer-row *matFooterRowDef="['noRecord']"></tr>
-    </ng-template>
   </table>
+  <div class="no-data" *ngIf="!devices || !devices.length">
+    Nenhum dispositivo encontrado
+  </div>
 </div>
