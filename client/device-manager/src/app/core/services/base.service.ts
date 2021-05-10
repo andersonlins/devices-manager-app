@@ -28,7 +28,7 @@ export class BaseService<T extends BaseModel> {
     if (!model.id) {
       return this.client.post<any>(environment.api.baseUrl + this.path, model);
     } else {
-      return this.client.put<any>(environment.api.baseUrl + this.path, model);
+      return this.client.put<any>(environment.api.baseUrl + this.path + '/' + model.id, model);
     }
   }
 }

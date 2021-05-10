@@ -75,4 +75,14 @@ export class DevicesComponent implements OnInit {
       }
     });
   }
+  saveDevice(device: DeviceViewModel) {
+    this.devService.save(device).subscribe(res => {
+      this.snackBar.open('Salvo', undefined, SNACK_PRESETS.SUCCESS);
+      this.populate();
+      this.selectedDevice = null;
+    },() => {
+      this.snackBar.open('Erro ao salvar', undefined, SNACK_PRESETS.ERROR);
+      this.selectedDevice = null;
+    });
+  }
 }

@@ -9,7 +9,7 @@
     [categories]="categories"
     *ngIf="selectedDevice"
     (onCancelEdit)="selectedDevice = null"
-    (onSaveDevice)="selectedDevice = null"
+    (onSaveDevice)="saveDevice($event)"
     >
   </app-edit-device>
   <table mat-table [dataSource]="devices" style="width: 100%;" *ngIf="!selectedDevice">

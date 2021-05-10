@@ -22,21 +22,32 @@ export class EditDeviceComponent implements OnInit {
   @Output()
   onSaveDevice = new EventEmitter<any>();
 
+  submitted = false;
+
   constructor(private fb: FormBuilder) {
-    this.deviceForm = this.fb.group({
-      color: this.fb.control('', [Validators.pattern(/^[a-z]{1,16}$/i)]),
-      categoryId: this.fb.control(0, [Validators.min(1)]),
-      partNumber: this.fb.control(0, [Validators.min(1), Validators.pattern(/^\d+$/)])
-    });
+   this.deviceForm = this.fb.group({});
   }
 
   ngOnInit() {
+    this.submitted = false;
+    this.deviceForm = this.fb.group({
+      color: this.fb.control(this.selectedDevice?.color, [Validators.required,Validators.pattern(/^[a-z]{1,16}$/i)]),
+      categoryId: this.fb.control(this.selectedDevice?.categoryId, [Validators.min(1)]),
+      partNumber: this.fb.control(this.selectedDevice?.partNumber, [Validators.min(1), Validators.pattern(/^\d+$/)])
+    });
   }
 
   cancel() {
     this.onCancelEdit.emit();
   }
   save() {
-    this.onSaveDevice.emit(this.deviceForm.value);
+    this.submitted = true;
+    this.deviceForm.markAllAsTouched();
+    if (!this.deviceForm.valid) {
+      return;
+    }
+    const editedDevice = { ...this.selectedDevice, ...this.deviceForm.value};
+    this.onSaveDevice.emit(editedDevice);
+    this.submitted = false;
   }
 }
